@@ -2,6 +2,54 @@
 
 ## Index
 
+
+
+
+
+### Lesson 1: Basic Scene
+#### First Scene
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Lesson 1: Basic Scene
 #### First scene
 - We need 4 elements to get started:
@@ -9,6 +57,7 @@
   - Some object
   - A camera 
   - A renderer
+
 
 ### Lesson 2: Local Server
 #### Problem wth the way we loaded Three.js in the previous lesson
