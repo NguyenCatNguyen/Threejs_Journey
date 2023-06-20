@@ -78,4 +78,31 @@
 - Vite will do a bunch of other things like optimizations, other languages support, cache breaking, source mapping, running a local server.
 - 
 
+#### Node.js
+- Node.js is use to running JS on our computer outside of a browser. 
+- Node.js is a runtime environment for JS.
+  - Use `node -v` to check if Node.js is installed.
 
+#### Dependencies
+- Twon dependencies we need to install:
+  - Three.js
+  - Vite
+#### Run the server
+``` bash
+# Install dependencies (only the first time)
+npm install
+
+# Run the local server at localhost:8080
+npm run dev
+
+# Build for production in the dist/ directory
+npm run build
+```
+
+### Lesson 3: Transform objects
+#### Properties
+- There are 4 main properties to transform  objects in our scene:
+  - `position`  to move the object
+  - `scale` to scale the object
+  - `rotation` to rotate the object
+  - `quaternion` to rotate the object in a different way
