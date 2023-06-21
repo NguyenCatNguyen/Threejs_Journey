@@ -13,7 +13,18 @@ const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
 const mesh = new THREE.Mesh(geometry, material)
 mesh.position.y = 1
+mesh.position.x = 0.7
+mesh.position.z = -0.6
 scene.add(mesh)
+
+console.log(mesh.position.length())
+
+// Scale
+//mesh.scale.x = 2
+//mesh.scale.y = 0.5
+
+// or use set
+mesh.scale.set(2, 0.5, 1)
 
 /**
  * Sizes
