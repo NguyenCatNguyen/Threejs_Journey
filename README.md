@@ -2,26 +2,6 @@
 
 ## Index
 
-
-
-
-
-### Lesson 1: Basic Scene
-#### First Scene
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Lesson 1: Basic Scene
 #### First scene
 - We need 4 elements to get started:
@@ -132,23 +112,21 @@ mesh.scale.set(2, 0.5, 0.5); // order is x, y, z
 ```
 
 #### Rotation
+- 
 ```js
-
-
+// When we rotate an object, just imagine that we rotate the object around the axis
+mesh.rotation.x = Math.PI * 0.25; 
+mesh.rotation.y = Math.PI * 0.25;
+mesh.rotation.z = Math.PI * 0.25;
 
 ```
 
-- Help check classroom technologies
-- Check for troubleshooting
-- Grain skill in AV, productivity, presentation and production technologies
-- Performing classroom AV checks, assiting users in those classroom , supporting auditorium AV technologies
-- Learning new technologies and working in a team environment
-- Classroom Technologies, IT Training ,Digital Signage, Educational Technologies, Accessibility, Promotion of KU IT services
+#### Quaternion
+- `quaternion` is a way to rotate an object in a different way.
+-  
 
 
 
 
-
-
-
-
+### Lesson 4: Animations
+#### Using requestAnimationFrame

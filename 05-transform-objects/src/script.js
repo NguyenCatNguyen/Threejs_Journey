@@ -9,22 +9,32 @@ const scene = new THREE.Scene()
 /**
  * Objects
  */
-const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
-const mesh = new THREE.Mesh(geometry, material)
-mesh.position.y = 1
-mesh.position.x = 0.7
-mesh.position.z = -0.6
-scene.add(mesh)
+const group = new THREE.Group()
+scene.add(group)
 
-console.log(mesh.position.length())
+const cube1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1,1,1), // Box Size width, height, depth
+    new THREE.MeshBasicMaterial({ color: 0xff0000 })
+)
 
-// Scale
-//mesh.scale.x = 2
-//mesh.scale.y = 0.5
+const cube2 = new THREE.Mesh(
+    new THREE.BoxGeometry(1,1,1),
+    new THREE.MeshBasicMaterial({color: 0Xf0f00})
+)
 
-// or use set
-mesh.scale.set(2, 0.5, 1)
+const cube3 = new THREE.Mesh(
+    new THREE.BoxGeometry(1,1,1),
+    new THREE.MeshBasicMaterial({color: blue })
+)
+
+
+
+group.add(cube1);
+group.add(cube2);
+group.add(cube3);
+
+
+
 
 /**
  * Sizes
