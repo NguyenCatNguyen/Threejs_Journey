@@ -2,7 +2,23 @@
 
 ## Index
 
-### Lesson 1: Basic Scene
+
+
+## 02. What is WebGL and Threejs?
+```
+- The goal of Threejs is to decrease the amount of code user have to write to create a 3D website.
+```
+### Threejs
+- A 3D JS library that enables developers to create 3D experiences for the web.
+- Work with WebGL, SVG, CSS3D, and HTML5 Canvas.
+### WebGL
+- A JavaScript API that renders triangles in a canvas. 
+- Fast
+- Low-level 
+<hr>
+
+
+## 03. Basic Scene
 #### First scene
 - We need 4 elements to get started:
   - A scene that will contain objects
