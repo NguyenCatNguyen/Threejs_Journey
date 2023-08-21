@@ -1,8 +1,11 @@
 # Threejs_Journey
 
 ## Index
-
-
+- [Lesson 1: Introduction](#lesson-1-introduction)
+- [Lesson 2: What is WebGL and Threejs?](#02-what-is-webgl-and-threejs)
+- [Lesson 3: Basic Scene](#03-basic-scene)
+- [Lesson 4: Local Server](#lesson-4-local-server)
+- [Lesson 5: Transform objects](#lesson-5-transform-objects)
 
 ## 02. What is WebGL and Threejs?
 ```
@@ -17,17 +20,66 @@
 - Low-level 
 <hr>
 
-
 ## 03. Basic Scene
 #### First scene
 - We need 4 elements to get started:
-  - A scene that will contain objects
-  - Some object
-  - A camera 
-  - A renderer
+  - `Scene` 
+    - The container of all the objects
+    - At some point we ask Three.js to render that scene.
+  - `Objects` we can create many types of objects in Threejs
+    - Primitive geometries
+  - `Camera` 
+    - Point of view
+    - We can create many types of camera in Threejs
+  - `Renderer`
+    - Render the scene with the camera
 
+```js
+ const scene = new THREE.Scene()
 
-### Lesson 2: Local Server
+// To create a visible object, we need three things: geometry, material, mesh
+
+// Red cube
+const geometry = new THREE.BoxGeometry(1, 1, 1)
+// THREE.BoxGeometry(width, height, depth)
+const material = new THREE.MeshBasicMaterial({ color: "red" })
+const mesh = new THREE.Mesh(geometry, material)
+
+// Follow the order: create geometry, create material, create mesh
+scene.add(mesh)
+
+// The aspect ratio is the ratio of the display width divided by the display height.
+const sizes = {
+    width: 800,
+    height: 600
+}
+
+// Camera - point of view
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
+camera.position.z = 3
+scene.add(camera)
+
+// Renderer
+const canvas = document.querySelector(".webgl") // DOM element
+console.log(canvas)
+const renderer = new THREE.WebGLRenderer({
+    canvas: canvas
+})
+renderer.setSize(sizes.width, sizes.height)
+
+renderer.render(scene,camera)
+
+```
+![Display a red cube](Graphic/1_.png)
+
+#### Step by step
+1. Create a scene
+2. Create a object
+   - 
+
+<hr>
+
+### 04. Local Server
 #### Problem wth the way we loaded Three.js in the previous lesson
 1. Only be able to access to "core" classes.
    - Can't access to class outside of core classes
@@ -66,6 +118,9 @@ npm run dev
 # Build for production in the dist/ directory
 npm run build
 ```
+
+<hr>
+
 
 ### Lesson 3: Transform objects
 #### Properties

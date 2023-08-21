@@ -5,7 +5,7 @@ const scene = new THREE.Scene()
 // Red cube
 const geometry = new THREE.BoxGeometry(1, 1, 1)
 // THREE.BoxGeometry(width, height, depth)
-const material = new THREE.MeshBasicMaterial({ color: "black" })
+const material = new THREE.MeshBasicMaterial({ color: "red" })
 const mesh = new THREE.Mesh(geometry, material)
 
 // Follow the order: create geometry, create material, create mesh
