@@ -18,7 +18,7 @@ const sizes = {
 }
 
 // Camera - point of view
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
+const camera = new THREE.PerspectiveCamera(100, sizes.width / sizes.height)
 camera.position.z = 3
 scene.add(camera)
 
