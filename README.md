@@ -72,10 +72,6 @@ renderer.render(scene,camera)
 ```
 ![Display a red cube](Graphic/1_.png)
 
-#### Step by step
-1. Create a scene
-2. Create a object
-   - 
 
 <hr>
 
