@@ -13,6 +13,7 @@
 ```
 ### Threejs
 - A 3D JS library that enables developers to create 3D experiences for the web.
+- Three.js is a JavaScript library under MIT license that works right above WebGL
 - Work with WebGL, SVG, CSS3D, and HTML5 Canvas.
 ### WebGL
 - A JavaScript API that renders triangles in a canvas. 
