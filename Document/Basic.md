@@ -6,6 +6,7 @@
 ```html
 <body>
     <canvas class="webgl"></canvas>
+    <!-- At script in, always add the library before the scripts-->
 
 
 </body>
