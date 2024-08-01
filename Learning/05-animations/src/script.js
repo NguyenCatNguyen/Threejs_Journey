@@ -28,4 +28,15 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
-renderer.render(scene, camera)
+
+mesh.rotation.x = 0.5;
+
+
+// Animation
+const animation = () =>{
+    mesh.rotation.y += 0.01;
+    renderer.render(scene, camera);
+    window.requestAnimationFrame(animation);
+}
+
+animation();

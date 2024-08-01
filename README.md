@@ -117,3 +117,28 @@ group.add(cube2);
 // After adding the object to the group, we can move the group
 group.position.y = 1;
 ```
+
+
+
+### 3. Animation
+- There are multiple ways to animate object in Three.js. In this lesson we will focus on learning the three main ways to animate objects in Three.js:
+  - **Using the `requestAnimationFrame` function**
+  - **Using the `Clock` class**
+  - **Using the `GSAP` library**
+
+#### 1. Using the `requestAnimationFrame` function
+- `requestAnimationFrame` is a function that calls a function to update the animation before the next repaint. It is used to create smooth animations.
+```JavaScript
+
+const animation = () =>{
+  // Update the object
+  mesh.rotation.y += 0.01;
+
+  // Render the scene
+  renderer.render(scene, camera);
+
+  // Call the animation function every frame
+  window.requestAnimationFrame(animation);
+}
+
+<img src="Graphic/SimpleAnimation.gif" alt="Image Description" style="width: 450px;">
