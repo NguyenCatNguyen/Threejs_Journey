@@ -1,6 +1,5 @@
-## Step by step to create a 3D scene
-
-### 1. HTML file
+### Basic Scene Setup
+#### 1. HTML file
 - This method is adding the threejs library to the HTML file
 
 ```html
@@ -41,3 +40,6 @@ camera.position.z = 3 // move the camera 3 units on the z axis
 scene.add(camera)
 ```
 7. Create a renderer
+
+
+

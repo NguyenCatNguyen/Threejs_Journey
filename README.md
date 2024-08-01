@@ -1,200 +1,119 @@
 # Threejs_Journey
-
 ## Index
-- [Lesson 1: Introduction](#lesson-1-introduction)
-- [Lesson 2: What is WebGL and Threejs?](#02-what-is-webgl-and-threejs)
-- [Lesson 3: Basic Scene](#03-basic-scene)
-- [Lesson 4: Local Server](#lesson-4-local-server)
-- [Lesson 5: Transform objects](#lesson-5-transform-objects)
 
-## 02. What is WebGL and Threejs?
-```
-- The goal of Threejs is to decrease the amount of code user have to write to create a 3D website.
-```
-### Threejs
+### 1. Introduction to `Three.js`, `Vite`, and `WebGL`
+#### Three.js
 - A 3D JS library that enables developers to create 3D experiences for the web.
 - Three.js is a JavaScript library under MIT license that works right above WebGL
 - Work with WebGL, SVG, CSS3D, and HTML5 Canvas.
-### WebGL
-- A JavaScript API that renders triangles in a canvas. 
+
+#### WebGL
+- A JavaScript API for rendering high-performance interactive 3D and 2D graphics within any compatible web browser without the use of plug-ins.
 - Fast
 - Low-level 
-<hr>
 
-## 03. Basic Scene
-#### First scene
-- We need 4 elements to get started:
-  - `Scene` 
-    - The container of all the objects
-    - At some point we ask Three.js to render that scene.
-  - `Objects` we can create many types of objects in Threejs
-    - Primitive geometries
-  - `Camera` 
-    - Point of view
-    - We can create many types of camera in Threejs
-  - `Renderer`
-    - Render the scene with the camera
+#### Vite
+- A build tool.
+- **Vite** is a build tool that helps you build web applications. It's fast, lean, and optimized for front-end development. It's a great alternative to Webpack and Parcel.
+- *Build Took* a program that will take all of the js files and bundle them into one single file
 
-```js
- const scene = new THREE.Scene()
+#### Installation ⬇️
+```bash
+// Install Vite
+npm init vite@latest
 
-// To create a visible object, we need three things: geometry, material, mesh
+// Install Three.js
+npm install three
 
-// Red cube
-const geometry = new THREE.BoxGeometry(1, 1, 1)
-// THREE.BoxGeometry(width, height, depth)
-const material = new THREE.MeshBasicMaterial({ color: "red" })
-const mesh = new THREE.Mesh(geometry, material)
+// Start the server
+npm run dev
 
-// Follow the order: create geometry, create material, create mesh
-scene.add(mesh)
+// Build the project
+npm run build
+```
 
-// The aspect ratio is the ratio of the display width divided by the display height.
+### 2. Basic Scene Setup
+- In this part I am focus on learning the basic setup of the scene in Three.js which include the following:
+  - Object Motion ➡️
+  - Scale Object ➡️
+
+```javascript
+import * as THREE from 'three';
+
+// Create the canvas
+const canvas = document.querySelector('canvas.webgl');
+
+// Create a scene
+const scene = new THREE.Scene();
+
+// Create a Object
+
+// Box Geometry (Width, Height, Depth) (x,y,z)
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh); // Add the object to the scene
+
+/**
+ * Sizes (also known as the aspect ratio)
+ * Use to establish the display width and height of the scene
+ */
 const sizes = {
     width: 800,
     height: 600
 }
 
-// Camera - point of view
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
+/**
+ * Camera
+ */
+// PerspectiveCamera(field of view, aspect ratio)
+const camera = new THREE.PerspectiveCamera(1, sizes.width / sizes.height)
 camera.position.z = 3
 scene.add(camera)
 
-// Renderer
-const canvas = document.querySelector(".webgl") // DOM element
-console.log(canvas)
+/**
+ * Renderer
+ */
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
-
-renderer.render(scene,camera)
-
+renderer.render(scene, camera)
 ```
-![Display a red cube](Graphic/1_.png)
+##### ❗️**Object Transform**
+- Use `mesh.position.set(x, y, z)` to set the position of the object.
+- Use `mesh.scale.set(x, y, z)` to set the scale of the object.
+- Use `mesh.rotation.set(x, y, z)` to set the rotation of the object.
+- These code can be put anywhere just before the `renderer
 
+#### Axis Helper
+- Use to hep visualize the axis of the object.
+```JavaScript
+const axesHelper = new THREE.AxesHelper(2);
+scene.add(axesHelper);
+``` 
 
-<hr>
+#### Group
+- Use to group multiple objects together. When done grouping, we can move, rotate, or scale the group instead of moving each object individually.
+```JavaScript
+const group = new THREE.Group();
+scene.add(group);
 
-### 04. Local Server
-#### Problem wth the way we loaded Three.js in the previous lesson
-1. Only be able to access to "core" classes.
-   - Can't access to class outside of core classes
-2. When open HTML file like that, the browser won't let JS execute any instructions
-   - Won't be able to load *local files* like textures or models.
-   - This actually is for safety reason, you don't want your computer to open an HTML file that you thought was safe.
-- But still, we need to be able to run JS code as if it were an online website and to do that, we need to  run  a local server
-- **The solution is** using a *build tool* or *bundler*.
+const cube1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({ color: 0xff0000 })
+);
+cube1.position.x = 0;
+group.add(cube1);
 
-##### Build tool
-- A build tool is a program that will take all of our JS files and bundle them into one single file.
-- We going to use **Vite** today.
+const cube2 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+);
 
-##### Vite
-- We write web code like HTML, CSS, JS,  and Vite will build the final website for us.
-- Vite will do a bunch of other things like optimizations, other languages support, cache breaking, source mapping, running a local server.
-- 
+cube2.position.x = -2;
+group.add(cube2);
 
-#### Node.js
-- Node.js is use to running JS on our computer outside of a browser. 
-- Node.js is a runtime environment for JS.
-  - Use `node -v` to check if Node.js is installed.
-
-#### Dependencies
-- Twon dependencies we need to install:
-  - Three.js
-  - Vite
-#### Run the server
-``` bash
-# Install dependencies (only the first time)
-npm install
-
-# Run the local server at localhost:8080
-npm run dev
-
-# Build for production in the dist/ directory
-npm run build
+// After adding the object to the group, we can move the group
+group.position.y = 1;
 ```
-
-<hr>
-
-
-### Lesson 3: Transform objects
-#### Properties
-- There are 4 main properties to transform  objects in our scene:
-  - `position`  to move the object
-  - `scale` to scale the object
-  - `rotation` to rotate the object
-  - `quaternion` to rotate the object in a different way
-
-#### The direction of each axis is arbitrary
-- x, y, z can be put anywhere we want just not after the `render` function.
-  - `x` is going to your right
-  - `y` is going up
-  - `z` is going toward you 
-- The unit of the position is up to the creator depend on what they want to do specifically.
-  - In this case, the unit is in meters.
-
-#### Vector3
-- `Vector3` is a class that represent a 3D vector.
-- `position` inherit from Vector3 which has many useful methods, you can get the length of a vector.
-
-
-
-
-#### Position
-```js
-// Way to position object
-// Move object
-mesh.position.x = 0.7;
-mesh.position.y = -0.6;
-mesh.position.z = 1;
-
-// Another way to move object
-mesh.position.set(0.7, -0.6, 1); // order is x, y, z
-```
-
-##### Vector3
-- `Vector3` is a class that represent a 3D vector.
-- Some useful methods
-```js
-// Get the length of a vector
-console.log(mesh.position.length());
-
-// Get a distance from another Vector3
-console.log(mesh.position.distanceTo(camera.position));
-
-// Normalize its values (mean that you can reduce the length of the vector to 1)
-console.log(mesh.position.normalize())
-```
-
-#### Scale
-```js
-// Scale object
-mesh.scale.x = 2;
-mesh.scale.y = 0.5;
-mesh.scale.z = 0.5;
-
-// Another way to scale object
-mesh.scale.set(2, 0.5, 0.5); // order is x, y, z
-```
-
-#### Rotation
-- 
-```js
-// When we rotate an object, just imagine that we rotate the object around the axis
-mesh.rotation.x = Math.PI * 0.25; 
-mesh.rotation.y = Math.PI * 0.25;
-mesh.rotation.z = Math.PI * 0.25;
-
-```
-
-#### Quaternion
-- `quaternion` is a way to rotate an object in a different way.
--  
-
-
-
-
-### Lesson 4: Animations
-#### Using requestAnimationFrame
