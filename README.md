@@ -140,5 +140,53 @@ const animation = () =>{
   // Call the animation function every frame
   window.requestAnimationFrame(animation);
 }
+```
 
 <img src="Graphic/SimpleAnimation.gif" alt="Image Description" style="width: 450px;">
+
+#### 2. Using the `Clock` class
+- The `Clock` class is used to keep track of the time in the animation. It is used to create smooth animations.
+```JavaScript
+const clock = new THREE.Clock();
+
+const animation = () =>{
+  // Get the time
+  const elapsedTime = clock.getElapsedTime();
+
+  // Update the object
+  mesh.rotation.y = elapsedTime;
+
+  // Render the scene
+  renderer.render(scene, camera);
+
+  // Call the animation function every frame
+  window.requestAnimationFrame(animation);
+}
+```
+
+#### 3. Using the `GSAP` library
+- GSAP is an JS animation library that is used to create complex animations. It is used to create smooth animations.
+
+- Install GSAP
+```bash
+npm install --save gsap@3.12
+```
+
+```JavaScript
+// Import GSAP
+import gsap from 'gsap';
+
+// use "to" method to animate the object
+gsap.to(mesh.position, { duration: 1, delay: 1, x: 2 });
+
+// still need to create the animation function
+const animation = () =>{
+  // Render the scene
+  renderer.render(scene, camera);
+
+  // Call the animation function every frame
+  window.requestAnimationFrame(animation);
+}
+```
+
+### 4.Camera

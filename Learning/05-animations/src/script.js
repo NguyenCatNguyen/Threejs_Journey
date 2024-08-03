@@ -1,5 +1,5 @@
-import * as THREE from 'three'
-
+import * as THREE from 'three';
+import gsap from 'gsap';
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
 
@@ -31,6 +31,7 @@ renderer.setSize(sizes.width, sizes.height)
 
 mesh.rotation.x = 0.5;
 
+gsap.to(mesh.position, {duration: 1, delay: 1, x: 2})
 
 // Animation
 const animation = () =>{
